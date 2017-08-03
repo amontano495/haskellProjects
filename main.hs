@@ -43,6 +43,10 @@ findDup (x:xs)
 	| x `elem` xs = x
 	| otherwise = findDup xs
 
+myGCD :: Int -> Int -> Int
+myGCD a b
+	| b == 0 = a
+	| otherwise = myGCD b (a `mod` b)
 
 main = do
 	let x = findDup [1,2,3,3]
