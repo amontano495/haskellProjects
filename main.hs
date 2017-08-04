@@ -19,6 +19,21 @@ subSet x y
 	| head x `elem` y = subSet (tail x) y
 	| otherwise = False
 
+makeUnion :: (Eq a) => [a] -> [a] -> [a]
+makeUnion x [] = x ++ []
+makeUnion [] x = x ++ []
+makeUnion x y
+	| head x `elem` y = makeUnion (tail x) y
+	| head y `elem` x = makeUnion (tail y) x
+	| otherwise = x ++ y
+
+makeIntersect :: (Eq a) => [a] -> [a] -> [a]
+makeIntersect [] y = []
+makeIntersect x [] = []
+makeIntersect x y
+	| head x `elem` y = (head x):(makeIntersect (tail x) y)
+	| otherwise = makeIntersect (tail x) y
+
 val :: [a] -> a
 val a = head a
 
@@ -47,4 +62,5 @@ myGCD :: Int -> Int -> Int
 myGCD a b
 	| b == 0 = a
 	| otherwise = myGCD b (a `mod` b)
+
 
