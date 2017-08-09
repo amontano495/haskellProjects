@@ -53,7 +53,7 @@ treeMember a [b]
 -}
 
 findDup :: (Eq a, Num a) => [a] -> a
-findDup [] = 0
+findDup [] = -1
 findDup (x:xs)
 	| x `elem` xs = x
 	| otherwise = findDup xs
